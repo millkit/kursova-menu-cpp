@@ -3,16 +3,16 @@
 Програма на C++, що зчитує меню з INI-файлу та дозволяє користувачеві взаємодіяти з багаторівневими пунктами через консоль.
 
 ## Файли:
-- `main.cpp` — основний код
-- `menu.ini` — структура меню
-- `Kursova_robota.exe` — виконуваний файл для Windows
+- main.cpp — основний код
+- menu.ini — структура меню
+- Kursova_robota.exe — виконуваний файл для Windows
 
 ## Як запустити:
 1. Скачай репозиторій як ZIP або клонуй.
-2. Запусти `Kursova_robota.exe` (Windows) або скомпілюй `main.cpp`.
-3. Меню зчитується з `menu.ini`.
+2. Запусти Kursova_robota.exe (Windows) або скомпілюй main.cpp.
+3. Меню зчитується з menu.ini.
 
 ## Технології:
 - C++
-- STL: `map`, `vector`, `pair`, `string`
+- STL: map, vector, pair, string
 - Робота з файлами та структура INI
