@@ -145,7 +145,7 @@ int main() {
 }
 ```
 
-##menu.ini
+## menu.ini
 ```menu.ini
 [Main]
 1=File
