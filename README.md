@@ -12,8 +12,8 @@
 - STL: map, vector, pair, string
 - Робота з файлами та структура INI
 
-- ## Код:
-- #include <fstream>    
+'''Код:
+#include <fstream>    
 #include <map>        
 #include <vector>     
 #include <string>     
