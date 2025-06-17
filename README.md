@@ -1,16 +1,11 @@
-# Консольний додаток з багаторівневим меню
+# Console Application with Multilevel Menu
 
-Програма на C++, що зчитує меню з INI-файлу та дозволяє користувачеві взаємодіяти з багаторівневими пунктами через консоль.
+A C++ program that reads a menu from an INI file and allows the user to interact with multilevel menu options via the console.
 
-## Файли:
-- main.cpp — основний код
-- menu.ini — структура меню
-- Kursova_robota.exe — виконуваний файл для Windows
-
-## Технології:
+## Technologies:
 - C++
 - STL: map, vector, pair, string
-- Робота з файлами та структура INI
+- Working with files and the INI structure
 
 ```cpp
 #include <fstream>    
@@ -23,32 +18,32 @@
 
 using namespace std;  
 
-// Оголошення типів для зручності та читабельності коду
+// Type definitions for convenience and code readability
 using MenuItem = pair<string, string>;               
 using MenuSection = vector<MenuItem>;                
 using MenuLevel = map<string, MenuSection>;          
 
-// Допоміжна функція, яка видаляє пробіли з початку і кінця вхідного рядка
+// A helper function that removes spaces from the beginning and end of the input string
 static inline string trim(const string& s) {  
     auto start = s.begin();  
     while (start != s.end() && isspace(static_cast<unsigned char>(*start))) ++start;  
     if (start == s.end()) 
-        return "";  
+return "";  
     auto end = s.end();  
     do { 
-        --end;
-    } while (end != start && isspace(static_cast<unsigned char>(*end)));
+--end;
+ 	} while (end != start && isspace(static_cast<unsigned char>(*end)));  
     return string(start, end + 1);  
 }
 
-// Функція завантаження меню з текстового INI-файлу
+// A function for loading a menu from a text-based INI file
 MenuLevel loadMenu(const string& filename) {
     ifstream file(filename);  
     if (!file) {  
         cerr << "File is not found: " << filename << endl;
         exit(1);  
     }
-    MenuLevel menu;  // Основна структура меню (словник секцій)
+    MenuLevel menu;  // The main menu structure (a dictionary of sections)
     string line, section;  
     while (getline(file, line)) {  
         line = trim(line);  
@@ -80,12 +75,12 @@ int showMenu(const MenuSection& items, const string& prompt) {
     return choice;  
 }
 
-// Основна функція програми, де виконується логіка навігації по меню
+// A function for displaying the menu items of the current section on the screen and reading the user's selection
 int main() {
     MenuLevel menu = loadMenu("menu.ini");  
     vector<string> path;  
     string section = "Main";  
-    
+
     while (true) {  
         auto it = menu.find(section);  
         if (it == menu.end() || it->second.empty()) {  
@@ -125,10 +120,10 @@ int main() {
             continue;  
         }
 
-        auto& items = it->second;  // Отримуємо список пунктів меню
+        auto& items = it->second;  // Retrieve the list of menu items
         auto found = find_if(items.begin(), items.end(), [choice](const MenuItem& p) {
             return stoi(p.first) == choice;  
-        });
+            });
 
         if (found == items.end()) {  
             cout << "Incorrect choice!\n";
@@ -140,7 +135,7 @@ int main() {
         for (size_t i = 1; i < path.size(); ++i)
             section += "->" + path[i];
 
-        system("cls");  
+           system("cls");  
     }
 
     cout << "Exit.\n";  
@@ -150,6 +145,7 @@ int main() {
 }
 ```
 
+##menu.ini
 ```menu.ini
 [Main]
 1=File
